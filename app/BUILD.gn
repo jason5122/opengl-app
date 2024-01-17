@@ -1,0 +1,50 @@
+import("//build/config/mac/templates/icon.gni")
+import("//build/config/mac/templates/macos_app_bundle.gni")
+
+macos_app_bundle("app") {
+  output_name = "OpenGLApp"
+  bundle_identifier = "com.jason5122.opengl-app"
+  info_plist = "resources/Info.plist"
+
+  # define `code_signing_identity` in args.gn
+
+  sources = [
+    "AppDelegate.m",
+    "controller/WindowController.mm",
+    "main.m",
+    "model/Renderer.mm",
+    "util/FileUtil.mm",
+    "util/LogUtil.mm",
+    "view/OpenGLLayer.mm",
+  ]
+
+  frameworks = [
+    "Cocoa.framework",
+    "QuartzCore.framework",
+    "OpenGL.framework",
+  ]
+
+  include_dirs = [
+    "//app",
+    "third_party",
+  ]
+
+  defines = [ "GL_SILENCE_DEPRECATION" ]
+
+  deps = [
+    # ":icon",
+    ":shaders",
+  ]
+}
+
+# icon("icon") {
+#   sources = [ "resources/app.iconset" ]
+# }
+
+bundle_data("shaders") {
+  sources = [
+    "resources/shader_frag.glsl",
+    "resources/shader_vert.glsl",
+  ]
+  outputs = [ "{{bundle_resources_dir}}/{{source_file_part}}" ]
+}

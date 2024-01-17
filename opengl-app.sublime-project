@@ -1,0 +1,37 @@
+{
+  "folders": [{ "path": "." }],
+
+  "build_systems": [
+    {
+      "name": "GN",
+      "working_dir": "$project_path",
+      "shell_cmd": "gn gen out/arm64"
+    },
+    {
+      "name": "Ninja",
+      "working_dir": "$project_path",
+      "shell_cmd": "ninja -C out/arm64",
+      "hide_after_success": true
+    },
+    {
+      "name": "Ninja + Run",
+      "working_dir": "$project_path",
+      "shell_cmd": "ninja -C out/arm64 && open out/arm64/OpenGLApp.app",
+      "hide_after_success": true
+    },
+    {
+      "name": "Clean",
+      "working_dir": "$project_path",
+      "shell_cmd": "gn clean out/arm64"
+    },
+    {
+      "name": "Clean stale",
+      "working_dir": "$project_path",
+      "shell_cmd": "gn clean_stale --ninja-executable=ninja out/arm64"
+    }
+  ],
+
+  "syntax_override": {
+    "\\.h$": "source.objc++"
+  }
+}
