@@ -31,7 +31,7 @@
 
 - (void)showWindow {
     [self.window center];
-    [self.window setFrameAutosaveName:@"opengl-app"];
+    [self.window setFrameAutosaveName:self.window.title];
     [self.window makeKeyAndOrderFront:nil];
 }
 
