@@ -3,6 +3,7 @@
 
 Renderer::Renderer(float width, float height) : width(width), height(height) {
     glDepthMask(GL_FALSE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // DEBUG: Draw shapes as wireframes.
 
     link_shaders();
 
@@ -49,7 +50,7 @@ Renderer::Renderer(float width, float height) : width(width), height(height) {
 }
 
 void Renderer::draw() {
-    // glViewport(0, 0, width, height);
+    glViewport(0, 0, width, height);
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 

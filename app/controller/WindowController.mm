@@ -20,6 +20,10 @@
         // openGLLayer.asynchronous = true;
         mainView.layer = openGLLayer;
 
+        // Fixes blurriness on HiDPI displays.
+        // https://bugzilla.gnome.org/show_bug.cgi?id=765194
+        mainView.layer.contentsScale = NSScreen.mainScreen.backingScaleFactor;
+
         self.window.contentView = mainView;
     }
     return self;

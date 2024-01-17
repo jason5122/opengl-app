@@ -37,8 +37,8 @@
     if (context || (context = [super copyCGLContextForPixelFormat:pixelFormat])) {
         CGLSetCurrentContext(context);
 
-        renderer = new Renderer(NSScreen.mainScreen.frame.size.width,
-                                NSScreen.mainScreen.frame.size.height);
+        renderer = new Renderer(NSScreen.mainScreen.frame.size.width * self.contentsScale,
+                                NSScreen.mainScreen.frame.size.height * self.contentsScale);
     }
     return context;
 }
