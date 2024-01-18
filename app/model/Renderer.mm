@@ -11,10 +11,10 @@ Renderer::Renderer(float width, float height) : width(width), height(height) {
     // https://gamedev.stackexchange.com/a/90482
 
     float vertices[] = {
-        0.5f,  0.5f,   // top right
-        0.5f,  -0.5f,  // bottom right
-        -0.5f, -0.5f,  // bottom left
-        -0.5f, 0.5f,   // top left
+        400, 200,  // top right
+        400, 0,    // bottom right
+        0,   0,    // bottom left
+        0,   200,  // top left
     };
     GLuint indices[] = {
         0, 1, 3,  // first triangle
